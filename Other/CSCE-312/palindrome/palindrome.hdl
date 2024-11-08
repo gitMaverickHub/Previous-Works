@@ -1,0 +1,13 @@
+// Name and UIN = Maverick Boyle 426005784
+
+// Palindrome Detection Chip
+
+CHIP palindrome {    
+    IN p, q, r, s, t;
+    OUT out;
+	
+    PARTS:
+    Xnor(a=p,b=t,out=pxnort);
+    Xnor(a=q,b=s,out=qxnors);
+    And(a=pxnort,b=qxnors,out=out);    
+}

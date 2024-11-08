@@ -1,0 +1,12 @@
+// Name and UIN = Maverick Boyle 426005784
+
+// Xnor gate made for convenience in making palindrome.hdl
+
+CHIP Xnor {    
+    IN a, b;
+    OUT out;
+	
+    PARTS:
+    Xor(a=a,b=b,out=XorOut);
+    Not(in=XorOut,out=out);    
+}
