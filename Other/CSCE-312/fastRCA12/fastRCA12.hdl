@@ -1,0 +1,19 @@
+// Name and UIN = Maverick Boyle 426005784
+
+// fast RCA12 Chip
+
+CHIP fastRCA12 {
+    IN A[12], B[12];
+    OUT SUM[12], COUT;
+	
+    PARTS:
+    RCA4(a=A[0..3],b=B[0..3],c=false,s=SUM[0..3],co=sel1);
+    RCA4(a=A[4..7],b=B[4..7],c=false,s=mux41a,co=mux1a);
+    RCA4(a=A[4..7],b=B[4..7],c=true,s=mux41b,co=mux1b);
+    RCA4(a=A[8..11],b=B[8..11],c=false,s=mux42a,co=mux2a);
+    RCA4(a=A[8..11],b=B[8..11],c=true,s=mux42b,co=mux2b);
+    Mux4(a=mux41a,b=mux41b,sel=sel1,out=SUM[4..7]);
+    Mux(a=mux1a,b=mux1b,sel=sel1,out=sel2);
+    Mux4(a=mux42a,b=mux42b,sel=sel2,out=SUM[8..11]);
+    Mux(a=mux2a,b=mux2b,sel=sel2,out=COUT);
+}
