@@ -1,0 +1,22 @@
+// Maverick Boyle 426005784
+// Program Counter
+
+/**
+ * A 16-bit counter with load and reset control bits.
+ * if      (reset[t] == 1) out[t+1] = 0
+ * else if (load[t] == 1)  out[t+1] = in[t]
+ * else if (inc[t] == 1)   out[t+1] = out[t] + 1  (integer addition)
+ * else                    out[t+1] = out[t]
+ */
+
+CHIP PC {
+    IN in[16],load,inc,reset;
+    OUT out[16];
+
+    PARTS:
+    Inc16(in=result,out=increase);
+	Mux16(a=result,b=increase,sel=inc,out=IncMux);
+	Mux16(a=IncMux,b=in,sel=load,out=LoadMux);
+	Mux16(a=LoadMux,b[0..15]=false,sel=reset,out=ResetMux);	
+	Register(in=ResetMux,load=true,out=result,out=out);
+}
