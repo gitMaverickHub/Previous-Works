@@ -1,0 +1,17 @@
+// Name and UIN = Maverick Boyle 426005784
+
+// Rock Paper Scissors 
+
+CHIP RPS {
+    IN p1[2], p2[2];
+    OUT out;
+	
+    PARTS:
+    And(a=p1[0],b=p2[1],out=bc);
+    Xor(a=p1[1],b=p2[0],out=axord);
+    And(a=p1[1],b=p2[0],out=ad);
+    Nor(a=p1[0],b=p2[1],out=bnorc);
+    And(a=bc,b=axord,out=and1);
+    And(a=ad,b=bnorc,out=and2);
+    Or(a=and1,b=and2,out=out);    
+}

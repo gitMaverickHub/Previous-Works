@@ -1,0 +1,12 @@
+// Name and UIN = Maverick Boyle 426005784
+
+// Nor gate for convenience in making RPS.hdl
+
+CHIP Nor {
+    IN a, b;
+    OUT out;
+	
+    PARTS:
+    Or(a=a,b=b,out=OrOut);
+    Not(in=OrOut,out=out);
+}
