@@ -1,0 +1,43 @@
+// Name and UIN
+
+CHIP CPU{
+
+    IN  fromM[16],          // M value input  (M = contents of RAM[Address])
+        In[16],    	    // In for execution
+        Reset;              // Signals whether to re-start the current
+                            // program (Reset==1) or continue executing
+                            // the current program (Reset==0).
+
+    OUT toM[16],            // M value output
+        writeM,             // Write to M 
+        addressM[16],       // Address in data memory (of M)
+        PCOut[16];          // address of next In
+
+    PARTS:
+    
+	Mux16(a=AluOut,b=fromM,sel=In,out=RegIn);
+    Register(in=RegIn,load=In,out=a);
+    Register(in=RegIn,load=In,out=b);
+    Register(in=RegIn,load=In,out=c);
+    Register(in=RegIn,load=In,out=d);
+    Register(in=RegIn,load=In,out=e);
+    Register(in=RegIn,load=In,out=f);
+    Register(in=RegIn,load=In,out=g);
+    Register(in=RegIn,load=In,out=h);
+
+    Mux8Way16(a=a,b=b,c=c,d=d,e=e,f=f,g=g,h=h,sel=In,out=A);
+    Mux8Way16(a=a,b=b,c=c,d=d,e=e,f=f,g=g,h=h,sel=In,out=B);
+
+    Mux16(a=B,b=true,sel=In,out=C);
+
+    ALU(AluOp=In[0..3],x=A,y=C,AluOut=AluOut,overflow=overflow);
+
+    Mux8Way16(a=a,b=b,c=c,d=d,e=e,f=f,g=g,h=h,sel=In,out=toM);
+    Mux8Way16(a=a,b=b,c=c,d=d,e=e,f=f,g=g,h=h,sel=In,out=D);
+
+    PC(in=D,load=In,inc=In,reset=Reset,out=PCOut);
+
+    Not(in=In,out=notIn);
+    Not(in=notIn,out=writeM);
+
+}

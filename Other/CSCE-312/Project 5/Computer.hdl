@@ -1,0 +1,29 @@
+
+// NAME AND UIN
+
+
+CHIP Computer{
+	
+	IN Reset;
+
+	PARTS:
+
+//ROM Start
+
+	ROM32K(address=pc,out=instruction);
+
+//ROM End
+
+//CPU Start
+
+	CPU(fromM=fromM, In=In, Reset=Reset, toM=toM, writeM=writeM, addressM=addressM, PCOut[0..14]=PCOut );
+
+//CPU End
+
+//Data Memory Start
+
+	Memory(in=toM, load=writeM, address=addressM, out=fromM );
+
+//Data Memory End
+
+}
