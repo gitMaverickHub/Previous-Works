@@ -1,0 +1,86 @@
+// Maverick Boyle 426005784
+
+//LeftLogicBitshift.hdl
+
+/**
+ * Shift x left by y bits, new bits are filled in with 0
+ * You may assume the maximum shift is 8 bits (in other words, y is in the binary range 0000000000000000 to 0000000000001000)
+ */
+
+CHIP LeftLogicBitshift {
+    IN x[16], y[16];
+    OUT out[16];
+
+    PARTS:
+    Not(in=y[0],out=y0);
+    Mux(a=false,b=x[0],sel=y0,out=out10);
+    Mux(a=x[0],b=x[1],sel=y0,out=out11);
+    Mux(a=x[1],b=x[2],sel=y0,out=out12);
+    Mux(a=x[2],b=x[3],sel=y0,out=out13);
+    Mux(a=x[3],b=x[4],sel=y0,out=out14);
+    Mux(a=x[4],b=x[5],sel=y0,out=out15);
+    Mux(a=x[5],b=x[6],sel=y0,out=out16);
+    Mux(a=x[6],b=x[7],sel=y0,out=out17);
+    Mux(a=x[7],b=x[8],sel=y0,out=out18);
+    Mux(a=x[8],b=x[9],sel=y0,out=out19);
+    Mux(a=x[9],b=x[10],sel=y0,out=out110);
+    Mux(a=x[10],b=x[11],sel=y0,out=out111);
+    Mux(a=x[11],b=x[12],sel=y0,out=out112);
+    Mux(a=x[12],b=x[13],sel=y0,out=out113);
+    Mux(a=x[13],b=x[14],sel=y0,out=out114);
+    Mux(a=x[14],b=x[15],sel=y0,out=out115);
+
+    Not(in=y[1],out=y1);
+    Mux(a=false,b=out10,sel=y1,out=out20);
+    Mux(a=false,b=out11,sel=y1,out=out21);
+    Mux(a=out10,b=out12,sel=y1,out=out22);
+    Mux(a=out11,b=out13,sel=y1,out=out23);
+    Mux(a=out12,b=out14,sel=y1,out=out24);
+    Mux(a=out13,b=out15,sel=y1,out=out25);
+    Mux(a=out14,b=out16,sel=y1,out=out26);
+    Mux(a=out15,b=out17,sel=y1,out=out27);
+    Mux(a=out16,b=out18,sel=y1,out=out28);
+    Mux(a=out17,b=out19,sel=y1,out=out29);
+    Mux(a=out18,b=out110,sel=y1,out=out210);
+    Mux(a=out19,b=out111,sel=y1,out=out211);
+    Mux(a=out110,b=out112,sel=y1,out=out212);
+    Mux(a=out111,b=out113,sel=y1,out=out213);
+    Mux(a=out112,b=out114,sel=y1,out=out214);
+    Mux(a=out113,b=out115,sel=y1,out=out215);
+
+    Not(in=y[2],out=y2);
+    Mux(a=false,b=out20,sel=y2,out=out30);
+    Mux(a=false,b=out21,sel=y2,out=out31);
+    Mux(a=false,b=out22,sel=y2,out=out32);
+    Mux(a=false,b=out23,sel=y2,out=out33);
+    Mux(a=out20,b=out24,sel=y2,out=out34);
+    Mux(a=out21,b=out25,sel=y2,out=out35);
+    Mux(a=out22,b=out26,sel=y2,out=out36);
+    Mux(a=out23,b=out27,sel=y2,out=out37);
+    Mux(a=out24,b=out28,sel=y2,out=out38);
+    Mux(a=out25,b=out29,sel=y2,out=out39);
+    Mux(a=out26,b=out210,sel=y2,out=out310);
+    Mux(a=out27,b=out211,sel=y2,out=out311);
+    Mux(a=out28,b=out212,sel=y2,out=out312);
+    Mux(a=out29,b=out213,sel=y2,out=out313);
+    Mux(a=out210,b=out214,sel=y2,out=out314);
+    Mux(a=out211,b=out215,sel=y2,out=out315);
+
+    Not(in=y[3],out=y3);
+    Mux(a=false,b=out30,sel=y3,out=out[0]);
+    Mux(a=false,b=out31,sel=y3,out=out[1]);
+    Mux(a=false,b=out32,sel=y3,out=out[2]);
+    Mux(a=false,b=out33,sel=y3,out=out[3]);
+    Mux(a=false,b=out34,sel=y3,out=out[4]);
+    Mux(a=false,b=out35,sel=y3,out=out[5]);
+    Mux(a=false,b=out36,sel=y3,out=out[6]);
+    Mux(a=false,b=out37,sel=y3,out=out[7]);
+    Mux(a=out30,b=out38,sel=y3,out=out[8]);
+    Mux(a=out31,b=out39,sel=y3,out=out[9]);
+    Mux(a=out32,b=out310,sel=y3,out=out[10]);
+    Mux(a=out33,b=out311,sel=y3,out=out[11]);
+    Mux(a=out34,b=out312,sel=y3,out=out[12]);
+    Mux(a=out35,b=out313,sel=y3,out=out[13]);
+    Mux(a=out36,b=out314,sel=y3,out=out[14]);
+    Mux(a=out37,b=out315,sel=y3,out=out[15]);
+}

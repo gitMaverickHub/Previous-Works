@@ -1,0 +1,21 @@
+// Maverick Boyle 426005784
+/**
+ * Adds or Subtracts two 4-bit values.
+ * You may have to implement some chips or additional logic to get all of the pieces you need
+ */
+
+CHIP AddSub4 {
+    IN a[4], b[4], sub;
+    OUT out[4],carry;
+
+    PARTS:
+    Not(in=b[0],out=notB0);
+    Not(in=b[1],out=notB1);
+    Not(in=b[2],out=notB2);
+    Not(in=b[3],out=notB3);
+    Mux(a=b[0],b=notB0,sel=sub,out=in20);
+    Mux(a=b[1],b=notB1,sel=sub,out=in21);
+    Mux(a=b[2],b=notB2,sel=sub,out=in22);
+    Mux(a=b[3],b=notB3,sel=sub,out=in23);
+    RCA4(a=a,b[0]=in20,b[1]=in21,b[2]=in22,b[3]=in23,c=sub,cout=carry,sum=out);
+}

@@ -1,0 +1,21 @@
+CHIP Zero16 {
+    IN in[16];
+    OUT out;
+
+    PARTS:
+    Nor(a=in[0],b=in[1],out=nor1);
+    Nor(a=in[2],b=in[3],out=nor2);
+    Nor(a=in[4],b=in[5],out=nor3);
+    Nor(a=in[6],b=in[7],out=nor4);
+    Nor(a=in[8],b=in[9],out=nor5);
+    Nor(a=in[10],b=in[11],out=nor6);
+    Nor(a=in[12],b=in[13],out=nor7);
+    Nor(a=in[14],b=in[15],out=nor8);
+    And(a=nor1,b=nor2,out=and1);
+    And(a=nor3,b=nor4,out=and2);
+    And(a=nor5,b=nor6,out=and3);
+    And(a=nor7,b=nor8,out=and4);
+    And(a=and1,b=and2,out=and5);
+    And(a=and3,b=and4,out=and6);
+    And(a=and5,b=and6,out=out);
+}

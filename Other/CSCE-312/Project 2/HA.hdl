@@ -1,0 +1,12 @@
+// Maverick Boyle 426005784
+
+// Adds 2 1-bit values with no carry in
+
+CHIP HA {
+    IN a, b;
+    OUT cout, sum;
+
+    PARTS:
+    And(a=a,b=b,out=cout);
+    Xor(a=a,b=b,out=sum);
+}

@@ -1,0 +1,14 @@
+// Maverick Boyle 426005784
+
+// Adds 2 4-bit values
+
+CHIP RCA4 {
+    IN a[4], b[4], c;
+    OUT cout, sum[4];
+
+    PARTS:
+    FA(a=a[0],b=b[0],c=c,cout=c1,sum=sum[0]);
+    FA(a=a[1],b=b[1],c=c1,cout=c2,sum=sum[1]);
+    FA(a=a[2],b=b[2],c=c2,cout=c3,sum=sum[2]);
+    FA(a=a[3],b=b[3],c=c3,cout=cout,sum=sum[3]);
+}
