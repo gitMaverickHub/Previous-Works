@@ -1,0 +1,18 @@
+% Function for the ode for PROBLEM 3
+% PART 2 of AERO321HW3.m
+
+function dydt = func321hw3p2.m
+
+aoaRad = 45*pi/180;
+omegaRad = 30 * pi/180;
+p = omegaRad*cos(aoaRad);
+r = omegaRad*sin(aoaRad);
+
+% Equations from 'Quaternion/Euler Parameter Propogation' slide
+
+dydt(1) = -p * y(2) ;
+dydt(2) = ;
+dydt(3) = ;
+dydt(4) = ;
+
+end
